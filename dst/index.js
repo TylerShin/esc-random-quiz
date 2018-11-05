@@ -17,14 +17,18 @@ function handleClickButton(e) {
     const targetQuestion = questions[index];
     solvedQuestions.push(targetQuestion);
     questions.splice(index, 1);
-    renderCountDom();
-    renderQuestion(targetQuestion);
+    render(targetQuestion);
 }
 function renderCountDom() {
-    COUNT_DOM.innerHTML = `${solvedQuestions.length} / ${questions.length}`;
+    COUNT_DOM.innerHTML = `${solvedQuestions.length} / ${questions.length +
+        solvedQuestions.length}`;
 }
 function renderQuestion(question) {
     ANSWER_DOM.innerHTML = question.content;
+}
+function render(question) {
+    renderQuestion(question);
+    renderCountDom();
 }
 renderCountDom();
 //# sourceMappingURL=index.js.map

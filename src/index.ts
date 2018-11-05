@@ -29,17 +29,22 @@ function handleClickButton(e: Event) {
   const targetQuestion = questions[index];
   solvedQuestions.push(targetQuestion);
   questions.splice(index, 1);
-  renderCountDom();
-  renderQuestion(targetQuestion);
+  render(targetQuestion);
 }
 
 // render functions
 function renderCountDom() {
-  COUNT_DOM.innerHTML = `${solvedQuestions.length} / ${questions.length}`;
+  COUNT_DOM.innerHTML = `${solvedQuestions.length} / ${questions.length +
+    solvedQuestions.length}`;
 }
 
 function renderQuestion(question: Question) {
   ANSWER_DOM.innerHTML = question.content;
+}
+
+function render(question: Question) {
+  renderQuestion(question);
+  renderCountDom();
 }
 
 // Init render
